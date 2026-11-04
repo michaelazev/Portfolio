@@ -2,6 +2,8 @@
 
 Portfólio com tema cósmico: o nome se forma com estrelas, as habilidades viram constelações e cada projeto sem foto ganha um planeta exclusivo. Inclui uma área de admin para gerenciar tudo sem mexer no código.
 
+**Site no ar:** <https://portfolio-michael-azevedo.vercel.app>
+
 Feito com React 19, Vite e Tailwind CSS 4.
 
 ## Rodar no computador
@@ -16,15 +18,13 @@ npm run dev
 
 No computador, o admin abre sem login e salva direto nos arquivos do projeto. Depois é só enviar com `git push`.
 
-## Colocar no ar
+## Publicação
 
-1. Envie o projeto para o repositório `michaelazev/Portfolio` no GitHub.
-2. Na [Vercel](https://vercel.com/new), importe esse repositório. Ela detecta o Vite sozinha; não precisa mudar nada.
-3. Pronto. Cada alteração enviada ao repositório atualiza o site em cerca de 1 minuto.
+O site está na Vercel, conectado a este repositório. Cada alteração enviada ao branch `main` atualiza o site em cerca de 1 minuto.
 
 ## Usar o admin no site publicado
 
-Abra `seu-site.vercel.app/admin`. Na primeira vez:
+Abra <https://portfolio-michael-azevedo.vercel.app/admin>. Na primeira vez:
 
 1. Clique em **Crie o token aqui**. A página do GitHub já vem preenchida.
 2. Em **Repository access**, escolha **Only select repositories** e marque só o `Portfolio`.
@@ -60,7 +60,7 @@ Sem configuração, o formulário abre o e-mail do visitante ou o WhatsApp com a
 | --- | --- |
 | `src/content/portfolio.json` | Todo o conteúdo do site (é o que o admin edita) |
 | `public/projects/` | Fotos dos projetos |
-| `public/meuCurriculo.pdf` | Currículo |
+| `public/meuCurriculo.pdf` | Currículo (criado ao enviar um PDF pelo admin) |
 | `src/components/` | Partes do site público |
 | `src/admin/` | Área de admin (carregada só em `/admin`) |
 | `scripts/admin-dev-plugin.js` | Gravação local, ativa só no `npm run dev` |
