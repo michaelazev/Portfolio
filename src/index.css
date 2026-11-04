@@ -1,0 +1,349 @@
+@import "tailwindcss";
+@import "@fontsource-variable/syne";
+@import "@fontsource-variable/manrope";
+@import "@fontsource-variable/jetbrains-mono";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  --font-sans: "Manrope Variable", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Syne Variable", "Manrope Variable", sans-serif;
+  --font-mono: "JetBrains Mono Variable", ui-monospace, monospace;
+
+  --color-border: hsl(var(--border));
+  --color-input: hsl(var(--input));
+  --color-ring: hsl(var(--primary));
+  --color-background: hsl(var(--background));
+  --color-foreground: hsl(var(--foreground));
+
+  --color-primary: hsl(var(--primary));
+  --color-primary-foreground: hsl(var(--primary-foreground));
+
+  --color-secondary: hsl(var(--secondary));
+  --color-secondary-foreground: hsl(var(--secondary-foreground));
+
+  --color-muted-foreground: hsl(var(--muted-foreground));
+
+  --color-card: hsl(var(--card));
+  --color-gold: hsl(var(--gold));
+
+  --color-destructive: hsl(var(--destructive));
+  --color-destructive-foreground: hsl(0 0% 100%);
+
+  --animate-float: float 6s ease-in-out infinite;
+  --animate-pulse-subtle: pulse-subtle 4s ease-in-out infinite;
+  --animate-fade-in: fade-in 0.7s ease-out forwards;
+  --animate-fade-in-delay-1: fade-in 0.7s ease-out 0.2s forwards;
+  --animate-fade-in-delay-2: fade-in 0.7s ease-out 0.4s forwards;
+  --animate-fade-in-delay-3: fade-in 0.7s ease-out 0.6s forwards;
+  --animate-fade-in-delay-4: fade-in 0.7s ease-out 0.8s forwards;
+  --animate-signal: signal 2s ease-out infinite;
+
+  @keyframes float {
+    0%,
+    100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-10px);
+    }
+  }
+  @keyframes pulse-subtle {
+    0%,
+    100% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0.8;
+    }
+  }
+  @keyframes fade-in {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  @keyframes signal {
+    0% {
+      transform: scale(1);
+      opacity: 0.7;
+    }
+    100% {
+      transform: scale(3);
+      opacity: 0;
+    }
+  }
+}
+
+@layer base {
+  /* Tema claro: uma carta celeste, com tinta índigo sobre papel. */
+  :root {
+    --background: 228 45% 96%;
+    --foreground: 232 45% 14%;
+
+    --card: 0 0% 100%;
+
+    --primary: 252 62% 52%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 230 40% 90%;
+    --secondary-foreground: 232 45% 18%;
+
+    --muted-foreground: 231 16% 38%;
+    --gold: 36 90% 38%;
+    --destructive: 0 70% 48%;
+
+    --border: 230 30% 84%;
+    --input: 230 28% 78%;
+  }
+
+  .dark {
+    --background: 228 48% 5%;
+    --foreground: 225 40% 93%;
+
+    --card: 230 40% 9%;
+
+    --primary: 252 90% 74%;
+    --primary-foreground: 240 50% 8%;
+
+    --secondary: 230 30% 15%;
+    --secondary-foreground: 225 40% 90%;
+
+    --muted-foreground: 226 18% 68%;
+    --gold: 41 95% 70%;
+    --destructive: 0 70% 50%;
+
+    --border: 229 28% 20%;
+    --input: 229 25% 26%;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  html {
+    @apply scroll-smooth;
+    scroll-padding-top: 5.5rem;
+    color-scheme: light;
+  }
+
+  html.dark {
+    color-scheme: dark;
+  }
+
+  body {
+    @apply bg-background font-sans text-foreground transition-colors duration-300;
+    font-feature-settings: "rlig" 1, "calt" 1;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  h1,
+  h2,
+  h3 {
+    @apply font-display;
+  }
+
+  button:not(:disabled),
+  summary,
+  label[for] {
+    cursor: pointer;
+  }
+
+  :focus-visible {
+    outline: 2px solid hsl(var(--primary));
+    outline-offset: 3px;
+    border-radius: 4px;
+  }
+
+  ::selection {
+    background: hsl(var(--primary) / 0.35);
+  }
+}
+
+@utility container {
+  margin-inline: auto;
+  padding-inline: 1.25rem;
+
+  @media (width >= 640px) {
+    max-width: 640px;
+    padding-inline: 2rem;
+  }
+  @media (width >= 768px) {
+    max-width: 768px;
+  }
+  @media (width >= 1024px) {
+    max-width: 1024px;
+  }
+  @media (width >= 1280px) {
+    max-width: 1180px;
+  }
+}
+
+@utility text-glow {
+  @apply relative;
+  text-shadow: 0 0 18px hsl(var(--primary) / 0.55);
+}
+
+@utility text-gradient {
+  background: linear-gradient(100deg, hsl(var(--primary)), hsl(var(--gold)));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+@utility kicker {
+  @apply font-mono text-xs tracking-[0.18em] text-primary uppercase;
+}
+
+@utility card-hover {
+  @apply transition-[transform,box-shadow,border-color] duration-300 hover:-translate-y-1 hover:border-primary/50 hover:shadow-[0_18px_50px_-24px_hsl(var(--primary)/0.7)];
+}
+
+@utility gradient-border {
+  @apply relative rounded-2xl border bg-card/70 backdrop-blur-sm;
+}
+
+@utility cosmic-button {
+  @apply inline-flex items-center justify-center gap-2 rounded-full bg-primary px-6 py-3 font-semibold text-primary-foreground
+  transition-all duration-300 hover:scale-[1.03] hover:shadow-[0_0_28px_hsl(var(--primary)/0.55)] active:scale-95
+  disabled:pointer-events-none disabled:opacity-60;
+}
+
+@utility ghost-button {
+  @apply inline-flex items-center justify-center gap-2 rounded-full border border-primary/60 px-6 py-3 font-semibold
+  transition-colors duration-300 hover:bg-primary/10 disabled:pointer-events-none disabled:opacity-60;
+}
+
+@utility field {
+  @apply w-full rounded-lg border border-input bg-background/70 px-4 py-3 text-foreground transition-colors placeholder:text-muted-foreground/70 focus:border-primary focus:ring-2 focus:ring-primary/40 focus:outline-hidden;
+}
+
+/* Fundo nebuloso, atrás do canvas de estrelas. */
+.nebula {
+  background:
+    radial-gradient(60vw 45vh at 82% 8%, hsl(var(--primary) / 0.16), transparent 70%),
+    radial-gradient(50vw 50vh at 8% 72%, hsl(205 90% 60% / 0.08), transparent 70%),
+    radial-gradient(40vw 30vh at 55% 100%, hsl(var(--gold) / 0.05), transparent 70%);
+}
+
+/* Revelação ao rolar. */
+.reveal {
+  opacity: 0;
+  transform: translateY(26px);
+  transition:
+    opacity 0.8s cubic-bezier(0.2, 0.7, 0.2, 1),
+    transform 0.8s cubic-bezier(0.2, 0.7, 0.2, 1);
+  transition-delay: var(--reveal-delay, 0ms);
+}
+
+.reveal.is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+/* Cartão com inclinação 3D e luz seguindo o cursor. */
+.tilt {
+  transform: perspective(900px) rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg));
+  transition: transform 0.25s ease-out;
+  will-change: transform;
+}
+
+.tilt-light::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: var(--light, 0);
+  transition: opacity 0.3s;
+  background: radial-gradient(420px circle at var(--mx, 50%) var(--my, 50%), hsl(var(--primary) / 0.2), transparent 65%);
+}
+
+/* Constelações. */
+.constellation-line {
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+  transition: stroke-dashoffset 1.2s ease-out;
+  transition-delay: var(--line-delay, 0ms);
+}
+
+.is-visible .constellation-line {
+  stroke-dashoffset: 0;
+}
+
+.constellation-star {
+  opacity: 0;
+  transition: opacity 0.6s ease-out;
+  transition-delay: var(--line-delay, 0ms);
+}
+
+.is-visible .constellation-star {
+  opacity: 1;
+}
+
+.skill-node {
+  cursor: default;
+  outline: none;
+}
+
+.skill-node .halo {
+  transform-box: fill-box;
+  transform-origin: center;
+  transition: transform 0.3s ease-out, opacity 0.3s;
+}
+
+.skill-node:hover .halo,
+.skill-node:focus-visible .halo {
+  transform: scale(1.7);
+  opacity: 0.55;
+}
+
+.skill-node:hover text,
+.skill-node:focus-visible text {
+  fill: hsl(var(--primary));
+}
+
+.typing-caret::after {
+  content: "";
+  display: inline-block;
+  width: 0.55em;
+  height: 1.05em;
+  margin-left: 0.15em;
+  vertical-align: -0.15em;
+  background: hsl(var(--primary));
+  animation: caret 1s steps(2) infinite;
+}
+
+@keyframes caret {
+  50% {
+    opacity: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    transition-delay: 0ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .reveal {
+    opacity: 1;
+    transform: none;
+  }
+
+  .constellation-line {
+    stroke-dashoffset: 0;
+  }
+
+  .constellation-star {
+    opacity: 1;
+  }
+}

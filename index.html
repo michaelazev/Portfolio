@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="pt-BR" class="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#070a14" />
+    <title>Michael Azevedo | Desenvolvedor Full Stack</title>
+    <meta name="description" content="Portfólio de Michael Azevedo, desenvolvedor full stack em Recife: aplicações web, APIs, automação e projetos com visão computacional e realidade aumentada." />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Michael Azevedo | Desenvolvedor Full Stack" />
+    <meta property="og:description" content="Aplicações web, APIs, automação e experimentos com visão computacional e realidade aumentada." />
+    <meta property="og:locale" content="pt_BR" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <script>
+      // Aplica o tema antes da primeira pintura, para a página não "piscar".
+      try {
+        if (localStorage.getItem("theme") === "light") document.documentElement.classList.remove("dark");
+      } catch (e) {}
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <noscript>Este portfólio precisa de JavaScript. Fale comigo em michaelazevedo08@gmail.com.</noscript>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
+</html>
