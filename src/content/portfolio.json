@@ -25,40 +25,134 @@
     "phone": "+55 (81) 99807-0744",
     "whatsapp": "5581998070744",
     "github": "https://github.com/michaelazev",
-    "linkedin": "",
+    "linkedin": "https://www.linkedin.com/in/michael-azevedo57/",
     "instagram": "",
     "cvUrl": "",
     "formEndpoint": "",
     "publicRepos": 20
   },
   "services": [
-    { "icon": "code", "title": "Desenvolvimento Web", "text": "Sites responsivos e aplicações com React, TypeScript e Node.js." },
-    { "icon": "workflow", "title": "APIs e Automação", "text": "Integrações entre sistemas, APIs e fluxos automatizados com n8n e IA." },
-    { "icon": "briefcase", "title": "UI/UX e Colaboração", "text": "Interfaces intuitivas, do protótipo no Figma à entrega organizada em equipe." }
+    {
+      "icon": "code",
+      "title": "Desenvolvimento Web",
+      "text": "Sites responsivos e aplicações com React, TypeScript e Node.js."
+    },
+    {
+      "icon": "workflow",
+      "title": "APIs e Automação",
+      "text": "Integrações entre sistemas, APIs e fluxos automatizados com n8n e IA."
+    },
+    {
+      "icon": "briefcase",
+      "title": "UI/UX e Colaboração",
+      "text": "Interfaces intuitivas, do protótipo no Figma à entrega organizada em equipe."
+    }
   ],
   "timeline": [
-    { "period": "Conclusão prevista: 2026", "title": "Análise e Desenvolvimento de Sistemas", "place": "Faculdade Nova Roma", "text": "" },
-    { "period": "2020 a 2022", "title": "Ensino Médio", "place": "Colégio Elo", "text": "" }
+    {
+      "period": "Conclusão prevista: 2026",
+      "title": "Análise e Desenvolvimento de Sistemas",
+      "place": "Faculdade Nova Roma",
+      "text": ""
+    },
+    {
+      "period": "2020 a 2022",
+      "title": "Ensino Médio",
+      "place": "Colégio Elo",
+      "text": ""
+    }
   ],
   "skills": [
-    { "name": "HTML/CSS", "level": 95, "category": "frontend" },
-    { "name": "JavaScript", "level": 70, "category": "frontend" },
-    { "name": "React", "level": 90, "category": "frontend" },
-    { "name": "TypeScript", "level": 60, "category": "frontend" },
-    { "name": "Tailwind CSS", "level": 70, "category": "frontend" },
-    { "name": "Node.js", "level": 80, "category": "backend" },
-    { "name": "Python", "level": 70, "category": "backend" },
-    { "name": "Java", "level": 70, "category": "backend" },
-    { "name": "APIs REST", "level": 50, "category": "backend" },
-    { "name": "MySQL", "level": 60, "category": "backend" },
-    { "name": "MongoDB", "level": 70, "category": "backend" },
-    { "name": "Supabase", "level": 50, "category": "backend" },
-    { "name": "Git/GitHub", "level": 90, "category": "tools" },
-    { "name": "VS Code", "level": 95, "category": "tools" },
-    { "name": "Figma", "level": 85, "category": "tools" },
-    { "name": "Trello", "level": 75, "category": "tools" },
-    { "name": "n8n", "level": 50, "category": "tools" },
-    { "name": "OpenCV", "level": 50, "category": "tools" }
+    {
+      "name": "HTML/CSS",
+      "level": 95,
+      "category": "frontend"
+    },
+    {
+      "name": "JavaScript",
+      "level": 70,
+      "category": "frontend"
+    },
+    {
+      "name": "React",
+      "level": 90,
+      "category": "frontend"
+    },
+    {
+      "name": "TypeScript",
+      "level": 60,
+      "category": "frontend"
+    },
+    {
+      "name": "Tailwind CSS",
+      "level": 70,
+      "category": "frontend"
+    },
+    {
+      "name": "Node.js",
+      "level": 80,
+      "category": "backend"
+    },
+    {
+      "name": "Python",
+      "level": 70,
+      "category": "backend"
+    },
+    {
+      "name": "Java",
+      "level": 70,
+      "category": "backend"
+    },
+    {
+      "name": "APIs REST",
+      "level": 50,
+      "category": "backend"
+    },
+    {
+      "name": "MySQL",
+      "level": 60,
+      "category": "backend"
+    },
+    {
+      "name": "MongoDB",
+      "level": 70,
+      "category": "backend"
+    },
+    {
+      "name": "Supabase",
+      "level": 50,
+      "category": "backend"
+    },
+    {
+      "name": "Git/GitHub",
+      "level": 90,
+      "category": "tools"
+    },
+    {
+      "name": "VS Code",
+      "level": 95,
+      "category": "tools"
+    },
+    {
+      "name": "Figma",
+      "level": 85,
+      "category": "tools"
+    },
+    {
+      "name": "Trello",
+      "level": 75,
+      "category": "tools"
+    },
+    {
+      "name": "n8n",
+      "level": 50,
+      "category": "tools"
+    },
+    {
+      "name": "OpenCV",
+      "level": 50,
+      "category": "tools"
+    }
   ],
   "projects": [
     {
@@ -67,8 +161,18 @@
       "title": "Eclipse Reads",
       "summary": "Web app para organizar leituras, gerenciar a biblioteca pessoal de livros e acompanhar o progresso de leitura.",
       "description": "O Eclipse Reads é uma biblioteca pessoal na web: um lugar para reunir seus livros, encontrar qualquer título rapidamente e acompanhar até onde você já leu.\n\nA aplicação foi construída com React e TypeScript, usa componentes acessíveis do Radix e guarda os dados no Supabase, com banco PostgreSQL.",
-      "highlights": ["Gerenciamento de livros com cartões, listagem e detalhes", "Modos de leitura e acompanhamento de progresso", "Pesquisa e filtros", "Persistência com Supabase"],
-      "tags": ["TypeScript", "React", "Supabase", "PostgreSQL"],
+      "highlights": [
+        "Gerenciamento de livros com cartões, listagem e detalhes",
+        "Modos de leitura e acompanhamento de progresso",
+        "Pesquisa e filtros",
+        "Persistência com Supabase"
+      ],
+      "tags": [
+        "TypeScript",
+        "React",
+        "Supabase",
+        "PostgreSQL"
+      ],
       "year": 2025,
       "cover": "",
       "gallery": [],
@@ -84,8 +188,20 @@
       "title": "Pokémon Mixed Reality Arena",
       "summary": "Aponte a câmera para pessoas reais e veja cada uma virar um treinador em uma arena 3D, em tempo real, direto no navegador.",
       "description": "Projeto universitário que une Realidade Mista, Visão Computacional e Realidade Virtual. A câmera do celular detecta as pessoas, e cada uma ganha um lugar em uma arena virtual em 3D.\n\nA posição de cada pessoa na imagem é convertida em uma posição na arena, com a profundidade estimada pelo tamanho do rosto, e um gesto de mão permite capturar um treinador.",
-      "highlights": ["Detecção facial com OpenCV e ID estável por pessoa", "Reconhecimento de nomes com LBPH", "Mapeamento espacial de 2D para 3D", "Gesto de captura: o número de dedos escolhe o Pokémon", "Arena em A-Frame (WebXR) com modo VR"],
-      "tags": ["JavaScript", "Python", "OpenCV", "A-Frame", "WebXR"],
+      "highlights": [
+        "Detecção facial com OpenCV e ID estável por pessoa",
+        "Reconhecimento de nomes com LBPH",
+        "Mapeamento espacial de 2D para 3D",
+        "Gesto de captura: o número de dedos escolhe o Pokémon",
+        "Arena em A-Frame (WebXR) com modo VR"
+      ],
+      "tags": [
+        "JavaScript",
+        "Python",
+        "OpenCV",
+        "A-Frame",
+        "WebXR"
+      ],
       "year": 2026,
       "cover": "",
       "gallery": [],
@@ -101,8 +217,19 @@
       "title": "Garagem Virtual AR",
       "summary": "CRUD de veículos em realidade aumentada: uma concessionária 3D onde é possível caminhar, escolher um carro e fazer um test drive.",
       "description": "Projeto acadêmico que integra AR.js e A-Frame a um back-end REST simulado com JSON Server, mostrando as operações de CRUD mapeadas para os verbos HTTP reais.\n\nFunciona em dois modos: no Modo AR, a concessionária aparece sobre um marcador impresso; no Modo Showroom, o cenário 3D pode ser explorado direto na tela.",
-      "highlights": ["CRUD completo de veículos via JSON Server", "Persistência offline com LocalStorage", "Modelos 3D proceduais por categoria de veículo", "Test drive animado", "Navegação por teclado ou joystick virtual"],
-      "tags": ["JavaScript", "AR.js", "A-Frame", "JSON Server"],
+      "highlights": [
+        "CRUD completo de veículos via JSON Server",
+        "Persistência offline com LocalStorage",
+        "Modelos 3D proceduais por categoria de veículo",
+        "Test drive animado",
+        "Navegação por teclado ou joystick virtual"
+      ],
+      "tags": [
+        "JavaScript",
+        "AR.js",
+        "A-Frame",
+        "JSON Server"
+      ],
       "year": 2026,
       "cover": "",
       "gallery": [],
@@ -118,8 +245,17 @@
       "title": "Detecção Facial em Tempo Real",
       "summary": "Visão computacional em Python: detecta rosto, olhos, nariz e boca pela webcam e aplica filtros no estilo das redes sociais.",
       "description": "A aplicação usa a webcam para detectar rostos em tempo real com o algoritmo Haar Cascade do OpenCV e aplica filtros de realidade aumentada.\n\nO encaixe de cada filtro é calculado a partir da distância real entre os olhos da pessoa, para que a máscara acompanhe o rosto com naturalidade.",
-      "highlights": ["Dois classificadores Haar Cascade combinados para maior taxa de acerto", "Realce de contraste (CLAHE) para ambientes com luz desigual", "Filtros dinâmicos: basta adicionar um PNG com transparência", "Encaixe calculado pela medida real dos olhos"],
-      "tags": ["Python", "OpenCV", "NumPy"],
+      "highlights": [
+        "Dois classificadores Haar Cascade combinados para maior taxa de acerto",
+        "Realce de contraste (CLAHE) para ambientes com luz desigual",
+        "Filtros dinâmicos: basta adicionar um PNG com transparência",
+        "Encaixe calculado pela medida real dos olhos"
+      ],
+      "tags": [
+        "Python",
+        "OpenCV",
+        "NumPy"
+      ],
       "year": 2026,
       "cover": "",
       "gallery": [],
@@ -135,8 +271,17 @@
       "title": "Localização de Academias",
       "summary": "Aplicação full stack para encontrar academias por localização e ver os detalhes de cada uma.",
       "description": "Projeto full stack desenvolvido com React no front-end e Node.js com Express no back-end, usando MySQL como banco de dados.\n\nA interface foi criada para a marca TecFit e a API cobre todas as operações de cadastro das academias, com testes básicos usando Jest e Supertest.",
-      "highlights": ["Listagem e busca de academias", "Cadastro, edição e exclusão via API REST", "Testes com Jest e Supertest"],
-      "tags": ["React", "Node.js", "Express", "MySQL"],
+      "highlights": [
+        "Listagem e busca de academias",
+        "Cadastro, edição e exclusão via API REST",
+        "Testes com Jest e Supertest"
+      ],
+      "tags": [
+        "React",
+        "Node.js",
+        "Express",
+        "MySQL"
+      ],
       "year": 2025,
       "cover": "/projects/project1.png",
       "gallery": [],
@@ -152,11 +297,23 @@
       "title": "Dashboard de Salários em Dados",
       "summary": "Dashboard interativo que analisa salários na área de dados de 2020 a 2025, com filtros, indicadores e gráficos.",
       "description": "Desenvolvido durante a Imersão Python da Alura, o dashboard permite explorar tendências salariais de forma visual e interativa.\n\nFoi construído em Python com Streamlit, Pandas e Plotly.",
-      "highlights": ["Filtros por ano, senioridade, contrato e tamanho da empresa", "Indicadores de salário médio, salário máximo e cargo mais frequente", "Gráficos interativos e tabela detalhada"],
-      "tags": ["Python", "Streamlit", "Pandas", "Plotly"],
+      "highlights": [
+        "Filtros por ano, senioridade, contrato e tamanho da empresa",
+        "Indicadores de salário médio, salário máximo e cargo mais frequente",
+        "Gráficos interativos e tabela detalhada"
+      ],
+      "tags": [
+        "Python",
+        "Streamlit",
+        "Pandas",
+        "Plotly"
+      ],
       "year": 2025,
       "cover": "https://raw.githubusercontent.com/michaelazev/Dashboard-dados/main/image/dashboard.png",
-      "gallery": ["https://raw.githubusercontent.com/michaelazev/Dashboard-dados/main/image/grafico.png", "https://raw.githubusercontent.com/michaelazev/Dashboard-dados/main/image/tabela.png"],
+      "gallery": [
+        "https://raw.githubusercontent.com/michaelazev/Dashboard-dados/main/image/grafico.png",
+        "https://raw.githubusercontent.com/michaelazev/Dashboard-dados/main/image/tabela.png"
+      ],
       "demoUrl": "",
       "repoUrl": "https://github.com/michaelazev/Dashboard-dados",
       "stars": 0,
@@ -170,7 +327,11 @@
       "summary": "API em FastAPI para gerenciar alunos, cursos e matrículas de uma instituição de ensino, pronta para rodar com Docker.",
       "description": "Uma API desenvolvida com FastAPI para gerenciar alunos, cursos e matrículas em uma instituição de ensino, com execução em contêiner Docker.",
       "highlights": [],
-      "tags": ["Python", "FastAPI", "Docker"],
+      "tags": [
+        "Python",
+        "FastAPI",
+        "Docker"
+      ],
       "year": 2025,
       "cover": "",
       "gallery": [],
@@ -187,7 +348,12 @@
       "summary": "Interface em React e TypeScript que consome uma API própria, organizada em componentes reutilizáveis.",
       "description": "Front-end construído com React 19, TypeScript, Vite e Tailwind, usando React Router para as rotas, TanStack Query para os dados do servidor e Radix UI com shadcn/ui nos componentes.\n\nA API fica em um repositório separado, o Pergunta-IA-Back.",
       "highlights": [],
-      "tags": ["TypeScript", "React", "TanStack Query", "Tailwind CSS"],
+      "tags": [
+        "TypeScript",
+        "React",
+        "TanStack Query",
+        "Tailwind CSS"
+      ],
       "year": 2025,
       "cover": "",
       "gallery": [],
