@@ -16,6 +16,7 @@
       // Aplica o tema antes da primeira pintura, para a página não "piscar".
       try {
         if (localStorage.getItem("theme") === "light") document.documentElement.classList.remove("dark");
+        if (localStorage.getItem("motion") === "off") document.documentElement.classList.add("reduce-motion");
       } catch (e) {}
     </script>
   </head>

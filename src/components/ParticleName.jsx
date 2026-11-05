@@ -16,8 +16,8 @@ export const ParticleName = ({ lines, stageRef }) => {
   useEffect(() => {
     const isTouch = window.matchMedia("(hover: none) and (pointer: coarse)").matches;
     const reduced = prefersReducedMotion();
-    // No computador, "reduzir movimento" mantém o texto liso. No toque, as estrelas só
-    // se movem com o dedo: sem voo inicial e sem cometa, respeitando a preferência.
+    // Com "Reduzir animações" ativo no rodapé, o computador mantém o texto liso. No toque,
+    // as estrelas só se movem com o dedo: sem voo inicial e sem cometa.
     if (reduced && !isTouch) return undefined;
     const hasComet = isTouch && !reduced;
 

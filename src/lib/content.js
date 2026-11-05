@@ -62,5 +62,20 @@ export const seededRandom = (seed) => {
   };
 };
 
+/** Escolha feita no botão do rodapé; a classe é aplicada em index.html antes da primeira pintura. */
 export const prefersReducedMotion = () =>
+  typeof document !== "undefined" && document.documentElement.classList.contains("reduce-motion");
+
+/** Configuração do sistema: não desliga os efeitos, só tira o que mais incomoda (riscos ao rolar). */
+export const systemPrefersCalm = () =>
   typeof window !== "undefined" && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+export const setMotionOff = (off) => {
+  try {
+    if (off) localStorage.setItem("motion", "off");
+    else localStorage.removeItem("motion");
+  } catch {
+    // Sem storage, a escolha vale só até a próxima visita.
+  }
+  document.documentElement.classList.toggle("reduce-motion", off);
+};

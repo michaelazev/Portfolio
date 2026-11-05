@@ -1,5 +1,5 @@
 import { useEffect, useRef } from "react";
-import { prefersReducedMotion } from "@/lib/content";
+import { prefersReducedMotion, systemPrefersCalm } from "@/lib/content";
 
 const DARK_TINTS = ["255,255,255", "255,255,255", "205,195,255", "255,226,170", "180,215,255"];
 const LIGHT_TINTS = ["52,48,130", "52,48,130", "98,70,200"];
@@ -18,6 +18,7 @@ export const StarBackground = () => {
     const canvas = canvasRef.current;
     const ctx = canvas.getContext("2d");
     const reduced = prefersReducedMotion();
+    const noStreaks = reduced || systemPrefersCalm();
 
     let width = 0;
     let height = 0;
@@ -125,7 +126,8 @@ export const StarBackground = () => {
         const twinkle = reduced ? 1 : 0.65 + 0.35 * Math.sin(now * 0.001 * star.speed + star.phase);
         const alpha = star.base * twinkle * (isDark ? 1 : 0.55);
         const color = tints[star.tint % tints.length];
-        const stretch = warp * star.depth * 0.9;
+        // Sem loop contínuo, o último valor ficaria congelado e as estrelas virariam riscos parados.
+        const stretch = noStreaks ? 0 : warp * star.depth * 0.9;
 
         if (stretch > 1.2) {
           ctx.strokeStyle = `rgba(${color},${alpha})`;

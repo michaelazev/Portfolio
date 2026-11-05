@@ -323,27 +323,31 @@
   }
 }
 
-@media (prefers-reduced-motion: reduce) {
-  *,
-  *::before,
-  *::after {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
-    transition-delay: 0ms !important;
-    scroll-behavior: auto !important;
-  }
+/*
+ * Ativado pelo botão "Reduzir animações" do rodapé. Não usa prefers-reduced-motion porque
+ * muitos computadores de empresa vêm com animações desligadas por padrão, e o visitante
+ * perderia todos os efeitos sem ter escolhido isso.
+ */
+.reduce-motion,
+.reduce-motion *,
+.reduce-motion *::before,
+.reduce-motion *::after {
+  animation-duration: 0.01ms !important;
+  animation-iteration-count: 1 !important;
+  transition-duration: 0.01ms !important;
+  transition-delay: 0ms !important;
+  scroll-behavior: auto !important;
+}
 
-  .reveal {
-    opacity: 1;
-    transform: none;
-  }
+.reduce-motion .reveal {
+  opacity: 1;
+  transform: none;
+}
 
-  .constellation-line {
-    stroke-dashoffset: 0;
-  }
+.reduce-motion .constellation-line {
+  stroke-dashoffset: 0;
+}
 
-  .constellation-star {
-    opacity: 1;
-  }
+.reduce-motion .constellation-star {
+  opacity: 1;
 }
