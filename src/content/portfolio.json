@@ -202,7 +202,7 @@
       "demoUrl": "https://eclipse-reasds.vercel.app",
       "repoUrl": "https://github.com/michaelazev/Eclipse-Reasds",
       "stars": 1,
-      "featured": true,
+      "featured": false,
       "hidden": false
     },
     {
@@ -231,7 +231,7 @@
       "demoUrl": "",
       "repoUrl": "https://github.com/michaelazev/pokemon-mr-arena",
       "stars": 0,
-      "featured": false,
+      "featured": true,
       "hidden": false
     },
     {
