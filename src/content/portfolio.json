@@ -50,28 +50,28 @@
   ],
   "timeline": [
     {
+      "period": "6 meses (Atualmente)",
+      "title": "Estagio de Analista Suporte ",
+      "place": "Dynamo Tecnologia",
+      "text": ""
+    },
+    {
       "period": "Estagio",
-      "title": "Analista de Suporte/Analista N8N automação",
+      "title": "Estagio de Suporte/Analista de n8n",
       "place": "Mv System",
       "text": "5 meses (Temporario)"
-    },
-    {
-      "period": "Estagiario",
-      "title": "Analista de Suporte",
-      "place": "Dynamo Tecnologia",
-      "text": "6 meses (Atualmente)"
-    },
-    {
-      "period": "7 periodo ",
-      "title": "Ciencia da Computação",
-      "place": "Faculdade Nova Roma",
-      "text": "(previsto conclusão 1 semestre 2027)"
     },
     {
       "period": "Concluido em 2025",
       "title": "Análise e Desenvolvimento de Sistemas",
       "place": "Faculdade Nova Roma",
       "text": ""
+    },
+    {
+      "period": "7 periodo ",
+      "title": "Ciencia da Computação",
+      "place": "Faculdade Nova Roma",
+      "text": "(previsto conclusão 1 semestre 2027)"
     },
     {
       "period": "2020 a 2022",
@@ -168,7 +168,12 @@
     },
     {
       "name": "OpenCV",
-      "level": 50,
+      "level": 95,
+      "category": "tools"
+    },
+    {
+      "name": "Docker ",
+      "level": 80,
       "category": "tools"
     }
   ],
