@@ -2,12 +2,12 @@
   "profile": {
     "name": "Michael Azevedo",
     "role": "Desenvolvedor Full Stack",
-    "tagline": "Crio aplicações web, APIs e automações, com atenção especial à experiência de quem usa.",
+    "tagline": "Crio aplicações web de ponta a ponta, do React ao banco de dados, e exploro visão computacional e realidade aumentada no navegador.",
     "rotating": [
-      "interfaces que conectam",
-      "APIs e integrações",
-      "automações com n8n",
-      "soluções com IA",
+      "aplicações full stack",
+      "APIs com Node.js",
+      "automações com n8n e IA",
+      "visão computacional",
       "experiências em realidade aumentada"
     ],
     "available": true,
@@ -15,9 +15,9 @@
     "aboutTitle": "Prazer, sou o",
     "aboutAccent": "Michael",
     "about": [
-      "Sou desenvolvedor em Recife e curso Análise e Desenvolvimento de Sistemas na Faculdade Nova Roma. Comecei pelo front-end e hoje trabalho a aplicação inteira: da interface em React às APIs, ao banco de dados e às automações.",
-      "Gosto de aprender construindo. Por isso meus projetos vão de um app de leitura com Supabase a experimentos com realidade aumentada e visão computacional que rodam na câmera do celular.",
-      "Busco uma oportunidade para somar a um time, aprender com pessoas experientes e contribuir com projetos que façam diferença. Tenho boa comunicação, gosto de trabalhar em equipe e sou proativo."
+      "Sou desenvolvedor full stack em Recife, formado em Análise e Desenvolvimento de Sistemas e no 7º período de Ciência da Computação. Construo aplicações de ponta a ponta com React, TypeScript, Node.js e bancos SQL, além de automações com n8n e IA.",
+      "Aprendo construindo: meus projetos vão de um app de leitura com Supabase a experiências de visão computacional e realidade aumentada que rodam na câmera do celular.",
+      "Busco uma oportunidade para somar a um time, aprender com pessoas experientes e contribuir com projetos que façam diferença."
     ],
     "location": "Recife, PE, Brasil",
     "coordinates": "08°03′S 34°54′O",
@@ -34,18 +34,18 @@
   "services": [
     {
       "icon": "code",
-      "title": "Desenvolvimento Web",
-      "text": "Sites responsivos e aplicações com React, TypeScript e Node.js."
+      "title": "Desenvolvimento Full Stack",
+      "text": "Aplicações completas com React, TypeScript e Node.js, do front ao banco de dados, com deploy na Vercel, Render e Docker."
     },
     {
       "icon": "workflow",
-      "title": "APIs e Automação",
-      "text": "Integrações entre sistemas, APIs e fluxos automatizados com n8n e IA."
+      "title": "APIs, Dados e Automação",
+      "text": "PIs com Fastify e Express, bancos PostgreSQL , Supabase e MySQL, dashboards em Python e fluxos automatizados com n8n e IA."
     },
     {
       "icon": "briefcase",
-      "title": "UI/UX e Colaboração",
-      "text": "Interfaces intuitivas, do protótipo no Figma à entrega organizada em equipe."
+      "title": "Visão Computacional e AR",
+      "text": "Experiências em tempo real com OpenCV, MediaPipe e A-Frame, rodando direto na câmera do celular ou no navegador."
     }
   ],
   "timeline": [
