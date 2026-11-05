@@ -1,8 +1,9 @@
-import { FileText, Plus, Trash2 } from "lucide-react";
+import { ArrowDown, ArrowUp, FileText, GripVertical, Plus, Trash2 } from "lucide-react";
 import { useRef, useState } from "react";
+import { cn } from "@/lib/utils";
 import { SKILL_CATEGORIES, skillTier } from "@/lib/content";
 import { prepareFile } from "./github";
-import { ConfirmDelete, Field, Panel, SmallButton, TextArea, TextField, Toggle } from "./ui";
+import { ConfirmDelete, IconButton, Panel, SmallButton, TextArea, TextField, Toggle } from "./ui";
 import { useAdmin } from "./store";
 
 const CV_PATH = "/meuCurriculo.pdf";
@@ -179,15 +180,31 @@ export const SkillsTab = () => {
 
 export const TimelineTab = () => {
   const { content, setContent } = useAdmin();
+  const [dragIndex, setDragIndex] = useState(null);
+  const [overIndex, setOverIndex] = useState(null);
+
   const setTimeline = (change) => setContent((draft) => ({ ...draft, timeline: change(draft.timeline) }));
   const update = (index, patch) => setTimeline((items) => items.map((item, i) => (i === index ? { ...item, ...patch } : item)));
+  const move = (from, to) =>
+    setTimeline((items) => {
+      if (from === to || to < 0 || to >= items.length) return items;
+      const next = [...items];
+      const [item] = next.splice(from, 1);
+      next.splice(to, 0, item);
+      return next;
+    });
+
+  const endDrag = () => {
+    setDragIndex(null);
+    setOverIndex(null);
+  };
 
   return (
     <div className="space-y-5">
       <div className="flex flex-wrap items-center justify-between gap-3">
         <div>
           <h1 className="text-3xl font-extrabold">Trajetória</h1>
-          <p className="text-sm text-muted-foreground">Formação, cursos e experiências, do mais recente para o mais antigo.</p>
+          <p className="text-sm text-muted-foreground">Arraste pela alça ou use as setas. A ordem aqui é a ordem no site.</p>
         </div>
         <SmallButton onClick={() => setTimeline((items) => [{ period: "", title: "", place: "", text: "" }, ...items])}>
           <Plus size={16} /> Adicionar
@@ -195,21 +212,68 @@ export const TimelineTab = () => {
       </div>
 
       {content.timeline.map((item, index) => (
-        <Panel key={index}>
-          <div className="grid gap-4 md:grid-cols-2">
-            <TextField label="Título" value={item.title} onChange={(title) => update(index, { title })} />
-            <TextField label="Período" value={item.period} onChange={(period) => update(index, { period })} />
-            <TextField label="Instituição ou empresa" value={item.place} onChange={(place) => update(index, { place })} />
-            <TextField label="Detalhe (opcional)" value={item.text} onChange={(text) => update(index, { text })} />
-          </div>
-          <Field label="" className="mt-2 flex justify-end">
-            {() => (
-              <ConfirmDelete label="Excluir item" onConfirm={() => setTimeline((items) => items.filter((_, i) => i !== index))}>
-                <Trash2 size={16} />
-              </ConfirmDelete>
-            )}
-          </Field>
-        </Panel>
+        <div
+          key={index}
+          data-timeline-item
+          onDragOver={(event) => {
+            if (dragIndex === null) return;
+            event.preventDefault();
+            event.dataTransfer.dropEffect = "move";
+            setOverIndex(index);
+          }}
+          onDrop={(event) => {
+            // Sem isto, o navegador tentaria soltar o conteúdo arrastado dentro de um campo de texto.
+            event.preventDefault();
+            if (dragIndex !== null) move(dragIndex, index);
+            endDrag();
+          }}
+          className={cn(
+            "rounded-2xl transition-[opacity,box-shadow]",
+            dragIndex === index && "opacity-40",
+            overIndex === index && dragIndex !== index && "ring-2 ring-primary",
+          )}
+        >
+          <Panel>
+            <div className="mb-3 flex items-center justify-between gap-2 border-b pb-3">
+              <div className="flex min-w-0 items-center gap-2">
+                <span
+                  draggable
+                  title="Arraste para mudar a ordem"
+                  onDragStart={(event) => {
+                    event.dataTransfer.effectAllowed = "move";
+                    event.dataTransfer.setData("application/x-timeline-item", String(index));
+                    event.dataTransfer.setDragImage(event.currentTarget.closest("[data-timeline-item]"), 24, 24);
+                    setDragIndex(index);
+                  }}
+                  onDragEnd={endDrag}
+                  className="cursor-grab rounded-lg p-2 text-muted-foreground transition-colors hover:bg-primary/10 hover:text-primary active:cursor-grabbing"
+                >
+                  <GripVertical size={18} />
+                </span>
+                <span className="font-mono text-xs text-muted-foreground">
+                  {index + 1} de {content.timeline.length}
+                </span>
+              </div>
+              <div className="flex items-center">
+                <IconButton label="Mover para cima" disabled={index === 0} onClick={() => move(index, index - 1)}>
+                  <ArrowUp size={17} />
+                </IconButton>
+                <IconButton label="Mover para baixo" disabled={index === content.timeline.length - 1} onClick={() => move(index, index + 1)}>
+                  <ArrowDown size={17} />
+                </IconButton>
+                <ConfirmDelete label="Excluir item" onConfirm={() => setTimeline((items) => items.filter((_, i) => i !== index))}>
+                  <Trash2 size={16} />
+                </ConfirmDelete>
+              </div>
+            </div>
+            <div className="grid gap-4 md:grid-cols-2">
+              <TextField label="Título" value={item.title} onChange={(title) => update(index, { title })} />
+              <TextField label="Período" value={item.period} onChange={(period) => update(index, { period })} />
+              <TextField label="Instituição ou empresa" value={item.place} onChange={(place) => update(index, { place })} />
+              <TextField label="Detalhe (opcional)" value={item.text} onChange={(text) => update(index, { text })} />
+            </div>
+          </Panel>
+        </div>
       ))}
     </div>
   );
