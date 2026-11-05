@@ -226,8 +226,14 @@
         "WebXR"
       ],
       "year": 2026,
-      "cover": "",
-      "gallery": [],
+      "cover": "/projects/pokemon-mixed-reality-arena-mw2vdqbw29.webp",
+      "gallery": [
+        "/projects/pokemon-mixed-reality-arena-mw2veabm78.webp",
+        "/projects/pokemon-mixed-reality-arena-mw2veafj12.webp",
+        "/projects/pokemon-mixed-reality-arena-mw2veajn94.webp",
+        "/projects/pokemon-mixed-reality-arena-mw2vean842.webp",
+        "/projects/pokemon-mixed-reality-arena-mw2vejik23.webp"
+      ],
       "demoUrl": "",
       "repoUrl": "https://github.com/michaelazev/pokemon-mr-arena",
       "stars": 0,
