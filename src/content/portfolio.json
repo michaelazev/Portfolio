@@ -178,6 +178,11 @@
       "name": "FastAPI",
       "level": 90,
       "category": "backend"
+    },
+    {
+      "name": "MediaPipe",
+      "level": 100,
+      "category": "backend"
     }
   ],
   "projects": [
