@@ -48,7 +48,7 @@ Tudo o que você edita fica em rascunho, mesmo se fechar a aba, até publicar. A
 - **Projetos:** ordem, destaque, ocultar, galeria e links.
 - **Perfil:** textos, contatos, redes sociais e o PDF do currículo.
 - **Habilidades:** nome, nível e categoria.
-- **Trajetória:** formação e experiências.
+- **Trajetória:** carreira, formação e cursos, com link para o certificado.
 
 ## Formulário de contato
 

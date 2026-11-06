@@ -47,7 +47,7 @@
       "text": "Experiências em tempo real com OpenCV, MediaPipe e A-Frame, rodando direto na câmera do celular ou no navegador."
     }
   ],
-  "timeline": [
+  "career": [
     {
       "period": "6 meses (Atualmente)",
       "title": "Estagio de Analista Suporte ",
@@ -59,7 +59,9 @@
       "title": "Estagio de Suporte/Analista de n8n",
       "place": "Mv System",
       "text": ""
-    },
+    }
+  ],
+  "education": [
     {
       "period": "7 periodo ",
       "title": "Ciencia da Computação",
@@ -73,6 +75,7 @@
       "text": ""
     }
   ],
+  "courses": [],
   "skills": [
     {
       "name": "HTML/CSS",

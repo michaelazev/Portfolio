@@ -1,11 +1,50 @@
-import { Briefcase, Code, Download, GraduationCap, Workflow } from "lucide-react";
+import { Award, Briefcase, Code, Download, ExternalLink, GraduationCap, Workflow } from "lucide-react";
+import { cn } from "@/lib/utils";
 import { Reveal, SectionHeading } from "./Reveal";
-import { content, visibleProjects } from "@/lib/content";
+import { content, safeUrl, visibleProjects } from "@/lib/content";
 
 const ICONS = { code: Code, workflow: Workflow, briefcase: Briefcase };
 
+const TimelineList = ({ items }) => (
+  <ol className="relative ml-2 space-y-8 border-l border-dashed border-primary/40">
+    {items.map((item, index) => (
+      <Reveal as="li" key={`${item.title}-${index}`} delay={index * 90} className="relative pl-8">
+        <span className="absolute top-1.5 -left-[7px] h-3.5 w-3.5 rounded-full bg-primary shadow-[0_0_14px_hsl(var(--primary))]" />
+        <p className="font-mono text-xs tracking-wider text-primary uppercase">{item.period}</p>
+        <h4 className="mt-1 font-display text-lg font-bold">{item.title}</h4>
+        <p className="text-muted-foreground">
+          {item.place}
+          {item.text ? `. ${item.text}` : ""}
+        </p>
+      </Reveal>
+    ))}
+  </ol>
+);
+
+const CourseList = ({ courses }) => (
+  <ul className="space-y-3">
+    {courses.map((course, index) => {
+      const certificate = safeUrl(course.url);
+      return (
+        <Reveal as="li" key={`${course.title}-${index}`} delay={index * 60} className="gradient-border flex items-center justify-between gap-4 p-4">
+          <div className="min-w-0">
+            <h5 className="font-display font-bold">{course.title}</h5>
+            <p className="text-sm text-muted-foreground">{[course.place, course.period].filter(Boolean).join(" · ")}</p>
+          </div>
+          {certificate && (
+            <a href={certificate} target="_blank" rel="noreferrer" className="flex shrink-0 items-center gap-1.5 text-sm font-semibold text-primary underline-offset-4 hover:underline">
+              Certificado <ExternalLink size={14} />
+            </a>
+          )}
+        </Reveal>
+      );
+    })}
+  </ul>
+);
+
 export const AboutSection = () => {
-  const { profile, services, timeline, skills, projects } = content;
+  const { profile, services, career, education, courses, skills, projects } = content;
+  const hasLearning = education.length > 0 || courses.length > 0;
 
   const stats = [
     { value: visibleProjects(projects).length, label: "projetos em destaque aqui" },
@@ -67,24 +106,33 @@ export const AboutSection = () => {
           </div>
         </div>
 
-        {timeline.length > 0 && (
-          <div className="mt-20">
-            <Reveal as="h3" className="mb-8 flex items-center gap-3 text-2xl font-bold">
-              <GraduationCap className="text-primary" /> Trajetória
-            </Reveal>
-            <ol className="relative ml-2 space-y-8 border-l border-dashed border-primary/40">
-              {timeline.map((item, index) => (
-                <Reveal as="li" key={item.title} delay={index * 90} className="relative pl-8">
-                  <span className="absolute top-1.5 -left-[7px] h-3.5 w-3.5 rounded-full bg-primary shadow-[0_0_14px_hsl(var(--primary))]" />
-                  <p className="font-mono text-xs tracking-wider text-primary uppercase">{item.period}</p>
-                  <h4 className="mt-1 font-display text-lg font-bold">{item.title}</h4>
-                  <p className="text-muted-foreground">
-                    {item.place}
-                    {item.text ? `. ${item.text}` : ""}
-                  </p>
+        {(career.length > 0 || hasLearning) && (
+          <div className={cn("mt-20 grid grid-cols-1 gap-14 lg:gap-16", career.length > 0 && hasLearning && "lg:grid-cols-2")}>
+            {career.length > 0 && (
+              <div>
+                <Reveal as="h3" className="mb-8 flex items-center gap-3 text-2xl font-bold">
+                  <Briefcase className="text-primary" /> Carreira
                 </Reveal>
-              ))}
-            </ol>
+                <TimelineList items={career} />
+              </div>
+            )}
+
+            {hasLearning && (
+              <div>
+                <Reveal as="h3" className="mb-8 flex items-center gap-3 text-2xl font-bold">
+                  <GraduationCap className="text-primary" /> Formação e cursos
+                </Reveal>
+                {education.length > 0 && <TimelineList items={education} />}
+                {courses.length > 0 && (
+                  <div className={education.length > 0 ? "mt-10" : ""}>
+                    <Reveal as="h4" className="mb-4 flex items-center gap-2 font-mono text-xs tracking-wider text-primary uppercase">
+                      <Award size={15} /> Cursos
+                    </Reveal>
+                    <CourseList courses={courses} />
+                  </div>
+                )}
+              </div>
+            )}
           </div>
         )}
       </div>

@@ -4,7 +4,7 @@ import { cn } from "@/lib/utils";
 import { useToast } from "@/hooks/use-toast";
 import { StarBackground } from "@/components/StarBackground";
 import { ThemeToggle } from "@/components/ThemeToggle";
-import { content as bundledContent } from "@/lib/content";
+import { content as bundledContent, normalizeContent } from "@/lib/content";
 import { connect, loadRemoteContent, publishLocally, publishToGitHub } from "./github";
 import { AdminContext } from "./store";
 import { ProjectsTab } from "./ProjectsTab";
@@ -60,6 +60,13 @@ const validate = (content) => {
     if (slugs.has(project.slug)) return `Dois projetos usam o endereço "${project.slug}". Altere um deles.`;
     slugs.add(project.slug);
   }
+  const untitled = [
+    ["Carreira", content.career],
+    ["Formação", content.education],
+    ["Cursos", content.courses],
+  ].find(([, items]) => items.some((item) => !item.title?.trim()));
+  if (untitled) return `Há um item sem título em ${untitled[0]}, na aba Trajetória. Preencha ou exclua.`;
+
   const names = new Set();
   for (const skill of content.skills) {
     const name = skill.name.trim().toLowerCase();
@@ -174,13 +181,13 @@ const AdminApp = () => {
 
     (async () => {
       try {
-        const source = LOCAL_MODE ? bundledContent : ((await loadRemoteContent(connection)) ?? bundledContent);
+        const source = LOCAL_MODE ? bundledContent : (normalizeContent(await loadRemoteContent(connection)) ?? bundledContent);
         if (cancelled) return;
         const draft = storage.read(DRAFT_KEY);
         const sourceText = JSON.stringify(source);
         setBaseline(sourceText);
         if (draft?.content && JSON.stringify(draft.content) !== sourceText) {
-          setContent(draft.content);
+          setContent(normalizeContent(draft.content));
           setFiles(draft.files ?? {});
           setRestored(true);
         } else {

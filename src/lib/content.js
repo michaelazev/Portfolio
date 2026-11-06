@@ -1,6 +1,21 @@
 import portfolio from "@/content/portfolio.json";
 
-export const content = portfolio;
+const isEducation = (item) =>
+  /(faculdade|universidade|escola|col[eé]gio|instituto|ensino|gradua|bacharel|tecn[oó]logo)/i.test(`${item.place} ${item.title}`);
+
+/** Aceita o formato antigo (uma lista só em `timeline`), que pode vir de um rascunho salvo no navegador. */
+export const normalizeContent = (data) => {
+  if (!data) return data;
+  const { timeline = [], ...rest } = data;
+  return {
+    ...rest,
+    career: rest.career ?? timeline.filter((item) => !isEducation(item)),
+    education: rest.education ?? timeline.filter(isEducation),
+    courses: rest.courses ?? [],
+  };
+};
+
+export const content = normalizeContent(portfolio);
 
 export const SKILL_CATEGORIES = [
   { id: "frontend", label: "Front-end", constellation: "Constelação da Interface" },

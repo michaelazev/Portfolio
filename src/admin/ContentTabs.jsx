@@ -178,17 +178,60 @@ export const SkillsTab = () => {
   );
 };
 
-export const TimelineTab = () => {
+const TIMELINE_GROUPS = [
+  {
+    id: "career",
+    title: "Carreira",
+    description: "Onde você trabalhou, do emprego atual para o mais antigo.",
+    emptyText: "Nenhuma experiência ainda.",
+    blank: { title: "", period: "", place: "", text: "" },
+    fields: [
+      { key: "title", label: "Cargo" },
+      { key: "period", label: "Período" },
+      { key: "place", label: "Empresa" },
+      { key: "text", label: "Detalhe (opcional)" },
+    ],
+  },
+  {
+    id: "education",
+    title: "Formação",
+    description: "Graduações e outras formações. Aparece junto com os cursos no site.",
+    emptyText: "Nenhuma formação ainda.",
+    blank: { title: "", period: "", place: "", text: "" },
+    fields: [
+      { key: "title", label: "Curso" },
+      { key: "period", label: "Período" },
+      { key: "place", label: "Instituição" },
+      { key: "text", label: "Detalhe (opcional)" },
+    ],
+  },
+  {
+    id: "courses",
+    title: "Cursos",
+    description: "Cursos livres e certificações. Sem nenhum, este bloco não aparece no site.",
+    emptyText: "Nenhum curso ainda. Clique em Adicionar para colocar o primeiro.",
+    blank: { title: "", period: "", place: "", url: "" },
+    fields: [
+      { key: "title", label: "Nome do curso" },
+      { key: "period", label: "Ano" },
+      { key: "place", label: "Instituição ou plataforma" },
+      { key: "url", label: "Link do certificado (opcional)", type: "url", placeholder: "https://..." },
+    ],
+  },
+];
+
+const EntryList = ({ group }) => {
   const { content, setContent } = useAdmin();
   const [dragIndex, setDragIndex] = useState(null);
   const [overIndex, setOverIndex] = useState(null);
+  const items = content[group.id];
 
-  const setTimeline = (change) => setContent((draft) => ({ ...draft, timeline: change(draft.timeline) }));
-  const update = (index, patch) => setTimeline((items) => items.map((item, i) => (i === index ? { ...item, ...patch } : item)));
+  const setItems = (change) => setContent((draft) => ({ ...draft, [group.id]: change(draft[group.id]) }));
+  const update = (index, patch) => setItems((list) => list.map((item, i) => (i === index ? { ...item, ...patch } : item)));
   const move = (from, to) =>
-    setTimeline((items) => {
-      if (from === to || to < 0 || to >= items.length) return items;
-      const next = [...items];
+    setItems((list) => {
+      if (from === to || to < 0 || to >= list.length) return list;
+      const next = [...list];
       const [item] = next.splice(from, 1);
       next.splice(to, 0, item);
       return next;
@@ -200,22 +243,25 @@ export const TimelineTab = () => {
   };
 
   return (
-    <div className="space-y-5">
+    <section data-group={group.id} className="space-y-4">
       <div className="flex flex-wrap items-center justify-between gap-3">
         <div>
-          <h1 className="text-3xl font-extrabold">Trajetória</h1>
-          <p className="text-sm text-muted-foreground">Arraste pela alça ou use as setas. A ordem aqui é a ordem no site.</p>
+          <h2 className="text-xl font-bold">{group.title}</h2>
+          <p className="text-sm text-muted-foreground">{group.description}</p>
         </div>
-        <SmallButton onClick={() => setTimeline((items) => [{ period: "", title: "", place: "", text: "" }, ...items])}>
+        <SmallButton onClick={() => setItems((list) => [{ ...group.blank }, ...list])}>
           <Plus size={16} /> Adicionar
         </SmallButton>
       </div>
 
-      {content.timeline.map((item, index) => (
+      {items.length === 0 && <p className="rounded-2xl border border-dashed p-6 text-center text-sm text-muted-foreground">{group.emptyText}</p>}
+
+      {items.map((item, index) => (
         <div
           key={index}
           data-timeline-item
           onDragOver={(event) => {
+            // dragIndex só existe nesta lista: não dá para soltar um item em outro grupo.
             if (dragIndex === null) return;
             event.preventDefault();
             event.dataTransfer.dropEffect = "move";
@@ -251,30 +297,41 @@ export const TimelineTab = () => {
                   <GripVertical size={18} />
                 </span>
                 <span className="font-mono text-xs text-muted-foreground">
-                  {index + 1} de {content.timeline.length}
+                  {index + 1} de {items.length}
                 </span>
               </div>
               <div className="flex items-center">
                 <IconButton label="Mover para cima" disabled={index === 0} onClick={() => move(index, index - 1)}>
                   <ArrowUp size={17} />
                 </IconButton>
-                <IconButton label="Mover para baixo" disabled={index === content.timeline.length - 1} onClick={() => move(index, index + 1)}>
+                <IconButton label="Mover para baixo" disabled={index === items.length - 1} onClick={() => move(index, index + 1)}>
                   <ArrowDown size={17} />
                 </IconButton>
-                <ConfirmDelete label="Excluir item" onConfirm={() => setTimeline((items) => items.filter((_, i) => i !== index))}>
+                <ConfirmDelete label="Excluir item" onConfirm={() => setItems((list) => list.filter((_, i) => i !== index))}>
                   <Trash2 size={16} />
                 </ConfirmDelete>
               </div>
             </div>
             <div className="grid gap-4 md:grid-cols-2">
-              <TextField label="Título" value={item.title} onChange={(title) => update(index, { title })} />
-              <TextField label="Período" value={item.period} onChange={(period) => update(index, { period })} />
-              <TextField label="Instituição ou empresa" value={item.place} onChange={(place) => update(index, { place })} />
-              <TextField label="Detalhe (opcional)" value={item.text} onChange={(text) => update(index, { text })} />
+              {group.fields.map(({ key, label, type, placeholder }) => (
+                <TextField key={key} label={label} type={type} placeholder={placeholder} value={item[key]} onChange={(value) => update(index, { [key]: value })} />
+              ))}
             </div>
           </Panel>
         </div>
       ))}
-    </div>
+    </section>
   );
 };
+
+export const TimelineTab = () => (
+  <div className="space-y-10">
+    <div>
+      <h1 className="text-3xl font-extrabold">Trajetória</h1>
+      <p className="text-sm text-muted-foreground">Arraste pela alça ou use as setas. A ordem aqui é a ordem no site.</p>
+    </div>
+    {TIMELINE_GROUPS.map((group) => (
+      <EntryList key={group.id} group={group} />
+    ))}
+  </div>
+);
