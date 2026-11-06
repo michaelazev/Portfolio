@@ -10,14 +10,13 @@
       "visão computacional",
       "experiências em realidade aumentada"
     ],
-    "available": true,
+    "available": false,
     "availabilityText": "Disponível para novas oportunidades",
     "aboutTitle": "Prazer, sou o",
     "aboutAccent": "Michael",
     "about": [
       "Sou desenvolvedor full stack em Recife, formado em Análise e Desenvolvimento de Sistemas e no 7º período de Ciência da Computação. Construo aplicações de ponta a ponta com React, TypeScript, Node.js e bancos SQL, além de automações com n8n e IA.",
-      "Meus projetos vão de um app de leitura com Supabase a experiências de visão computacional e realidade aumentada que rodam na câmera do celular.",
-      "Busco uma oportunidade para somar a um time, aprender com pessoas experientes e contribuir com projetos que façam diferença."
+      "Meus projetos vão de um app de leitura com Supabase a experiências de visão computacional e realidade aumentada que rodam na câmera do celular."
     ],
     "location": "Recife, PE, Brasil",
     "coordinates": "08°03′S 34°54′O",
