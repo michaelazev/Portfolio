@@ -16,7 +16,7 @@
     "aboutAccent": "Michael",
     "about": [
       "Sou desenvolvedor full stack em Recife, formado em Análise e Desenvolvimento de Sistemas e no 7º período de Ciência da Computação. Construo aplicações de ponta a ponta com React, TypeScript, Node.js e bancos SQL, além de automações com n8n e IA.",
-      "Aprendo construindo: meus projetos vão de um app de leitura com Supabase a experiências de visão computacional e realidade aumentada que rodam na câmera do celular.",
+      "Meus projetos vão de um app de leitura com Supabase a experiências de visão computacional e realidade aumentada que rodam na câmera do celular.",
       "Busco uma oportunidade para somar a um time, aprender com pessoas experientes e contribuir com projetos que façam diferença."
     ],
     "location": "Recife, PE, Brasil",
@@ -88,7 +88,7 @@
     },
     {
       "name": "JavaScript",
-      "level": 90,
+      "level": 95,
       "category": "frontend"
     },
     {
@@ -98,27 +98,27 @@
     },
     {
       "name": "TypeScript",
-      "level": 85,
+      "level": 95,
       "category": "frontend"
     },
     {
       "name": "Tailwind CSS",
-      "level": 70,
+      "level": 95,
       "category": "frontend"
     },
     {
       "name": "Node.js",
-      "level": 95,
+      "level": 100,
       "category": "backend"
     },
     {
       "name": "Python",
-      "level": 95,
+      "level": 100,
       "category": "backend"
     },
     {
       "name": "Java",
-      "level": 95,
+      "level": 100,
       "category": "backend"
     },
     {
@@ -168,13 +168,23 @@
     },
     {
       "name": "OpenCV",
-      "level": 95,
+      "level": 100,
       "category": "tools"
     },
     {
       "name": "Docker ",
       "level": 80,
       "category": "tools"
+    },
+    {
+      "name": "A-Frame",
+      "level": 95,
+      "category": "frontend"
+    },
+    {
+      "name": "FastAPI",
+      "level": 90,
+      "category": "backend"
     }
   ],
   "projects": [
